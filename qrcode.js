@@ -611,6 +611,6 @@ var QRCode;
 	 * @name QRCode.CorrectLevel
 	 */
 	QRCode.CorrectLevel = QRErrorCorrectLevel;
-})()
+}).call(this)
 
 export default QRCode
