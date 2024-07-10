@@ -281,7 +281,7 @@ var QRCode;
 		
 		// Android 2.1 bug workaround
 		// http://code.google.com/p/android/issues/detail?id=5141
-		if (this._android && this._android <= 2.1) {
+		if (window._android && window._android <= 2.1) {
 	    	var factor = 1 / window.devicePixelRatio;
 	        var drawImage = CanvasRenderingContext2D.prototype.drawImage; 
 	    	CanvasRenderingContext2D.prototype.drawImage = function (image, sx, sy, sw, sh, dx, dy, dw, dh) {
@@ -351,7 +351,7 @@ var QRCode;
 		 */
 		var Drawing = function (el, htOption) {
     		this._bIsPainted = false;
-    		this._android = _getAndroid();
+    		window._android = _getAndroid();
 		
 			this._htOption = htOption;
 			this._elCanvas = document.createElement("canvas");
@@ -563,7 +563,7 @@ var QRCode;
 			Drawing = svgDrawer;
 		}
 		
-		this._android = _getAndroid();
+		window._android = _getAndroid();
 		this._el = el;
 		this._oQRCode = null;
 		this._oDrawing = new Drawing(this._el, this._htOption);
@@ -595,7 +595,7 @@ var QRCode;
 	 * @private
 	 */
 	QRCode.prototype.makeImage = function () {
-		if (typeof this._oDrawing.makeImage == "function" && (!this._android || this._android >= 3)) {
+		if (typeof this._oDrawing.makeImage == "function" && (!window._android || window._android >= 3)) {
 			this._oDrawing.makeImage();
 		}
 	};
